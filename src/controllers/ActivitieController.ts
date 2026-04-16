@@ -86,6 +86,25 @@ export class ActivitieController{
 
     public static async delete(req: Request, res: Response){
             try{
+                const id = Number(req.params.id)
+
+                const repo = Connection.getRepository(Activitie)
+                const activitie = await repo.findOneBy({IdActivities: id})
+
+                if(!activitie){
+                    return res.status(500).json({
+                        status: false,
+                        msg: 'Usuario não existe'
+                    })
+
+                await repo.delete({IdActivities: id})
+
+                return res.status(200).json({
+                    status: true,
+                    msg: 'usuario deletado com sucesso'
+                })
+
+                }
 
             }catch(error){
                 console.log(error)
