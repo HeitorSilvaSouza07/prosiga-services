@@ -3,8 +3,8 @@ import { Activitie } from "./Activitie";
 
 @Entity('tblClass')
 export class Class{
-    @PrimaryGeneratedColumn()
-    IdClass: number;type: 'number'
+    @PrimaryGeneratedColumn({type: 'number'})
+    IdClass: number;
 
     @Column({type: 'number'})
     ClassPeriod: number;
