@@ -45,7 +45,7 @@ export class ClassControllers{
         }catch(error: any){
             return res.status(500).json({
                 status: false,
-                msg: 'erro inteiro na conexão'
+                msg: "ERROR IN BANK CONNECTION"
             })
         }
     }
@@ -79,7 +79,7 @@ export class ClassControllers{
         }catch(error: any){
             return res.status(500).json({
                 status: false,
-                msg: 'erro inteiro na conexão'
+                msg: "ERROR IN BANK CONNECTION"
             })
         }
     }
@@ -124,7 +124,7 @@ export class ClassControllers{
         }catch(error: any){
             return res.status(500).json({
                 status: false,
-                msg: 'erro inteiro na conexão'
+                msg: "ERROR IN BANK CONNECTION"
             })
         }
     }
@@ -154,7 +154,7 @@ export class ClassControllers{
         }catch(error: any){
             return res.status(500).json({
                 status: false,
-                msg: 'erro inteiro na conexão'
+                msg: "ERROR IN BANK CONNECTION"
             })
         }
     }

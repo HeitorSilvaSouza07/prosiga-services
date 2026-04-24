@@ -1,7 +1,6 @@
 import e, { Request, Response } from "express";
 import { Connection } from "../database/database";
 import { Activitie } from "../entities/Activitie";
-import { actionAsyncStorage } from "next/dist/server/app-render/action-async-storage.external";
 import { User } from "../entities/User";
 import { Class } from "../entities/Class";
 
@@ -28,10 +27,9 @@ export class ActivitieController {
             })
 
         } catch (error) {
-            console.error(error)
             return res.status(500).json({
                 status: false,
-                msg: 'erro na conexão com o banco de dados'
+                msg: 'ERROR IN BANK CONNECTION'
             })
         }
     }
@@ -55,10 +53,9 @@ export class ActivitieController {
             })
 
         } catch (error) {
-            console.log(error)
             return res.status(500).json({
                 status: false,
-                msg: "Erro na conexão com o banco de dados"
+                msg: "ERROR IN BANK CONNECTION"
             })
         }
     }
@@ -148,10 +145,9 @@ export class ActivitieController {
             })
             //retorna erro caso retorme algum problema 
         } catch (error) {
-            console.log(error)
             return res.status(500).json({
                 status: false,
-                msg: "Erro na conexão com o banco de dados"
+                msg: "ERROR IN BANK CONNECTION"
             })
         }
     }
@@ -160,10 +156,9 @@ export class ActivitieController {
         try {
 
         } catch (error) {
-            console.error(error)
             return res.status(500).json({
                 status: false,
-                msg: 'Erro na conexão com o banco de dados'
+                msg: "ERROR IN BANK CONNECTION"
             })
         }
     }
@@ -190,10 +185,9 @@ export class ActivitieController {
             })  
 
         } catch (error) {
-            console.log(error)
             return res.status(500).json({
                 status: false,
-                msg: 'erro na conexão como banco de dados'
+                msg: "ERROR IN BANK CONNECTION"
             })
         }
     }

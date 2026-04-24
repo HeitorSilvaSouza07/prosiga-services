@@ -115,7 +115,7 @@ export class UserControllers{
                 status: true,
                 msg: 'Usuario deletado com sucesso'
             })
-            
+              
         }catch(error: any){
             return res.status(500).json({
                 status: false,
