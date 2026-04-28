@@ -3,13 +3,13 @@ import { Activitie } from "./Activitie";
 
 @Entity('tblClass')
 export class Class{
-    @PrimaryGeneratedColumn({type: 'number'})
+    @PrimaryGeneratedColumn()
     IdClass!: number;
 
-    @Column({type: 'number'})
+    @Column({ type: 'int' })
     ClassPeriod!: number;
 
-    @Column({type: 'varchar'})
+    @Column({ type: 'nvarchar', length: 255 })
     ClassCurso!: string;
     
     @OneToMany (() => Activitie, (activitie) => activitie.classe)

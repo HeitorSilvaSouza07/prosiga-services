@@ -3,16 +3,16 @@ import { Activitie } from "./Activitie";
 
 @Entity('tblUser')
 export class User{
-    @PrimaryGeneratedColumn({type: 'number'})
+    @PrimaryGeneratedColumn()
     IdUser!: number;
 
-    @Column({type: 'string'})
+    @Column({ type: 'nvarchar', length: 255 })
     UserName!: string;
 
-    @Column({type: 'string'})
+    @Column({ type: 'nvarchar', length: 11 })
     UserCpf!: string;
 
-    @Column({type: 'string'})
+    @Column({ type: 'nvarchar', length: 50 })
     UserType!: string;
 
     @OneToMany(() => Activitie, (activitie) => activitie.user)

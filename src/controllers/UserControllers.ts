@@ -13,7 +13,7 @@ export class UserControllers{
 
             if(!user){
                 return res.status(404).json({
-                    status: FileSystemWritableFileStream,
+                    status: false,
                     msg: 'Usuario não existe'
                 })
             }

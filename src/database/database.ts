@@ -1,22 +1,28 @@
-import { ConnectionCheckedInEvent, DataSource } from 'typeorm'
+import { DataSource } from 'typeorm'
 import { User } from '../entities/User'
 import { Activitie } from '../entities/Activitie'
 import { Class } from '../entities/Class'
 
 export const Connection = new DataSource({
     type: 'mssql',
-    host: process.env.DB_HOST,
-    port: Number(process.env.DB_PORT),
+    host: process.env.DB_HOST || 'localhost',
+    port: Number(process.env.DB_PORT) || 1433,
     username: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
     options: {
         encrypt: false,
-        trustServerCertificate: true
+        trustServerCertificate: true,
+        enableArithAbort: true,
     },
     entities: [User, Activitie, Class],
-    synchronize: true,
-}) 
+    synchronize: process.env.NODE_ENV !== 'production',
+    logging: process.env.NODE_ENV === 'development',
+    pool: {
+        min: 2,
+        max: 10,
+    },
+})
 
 export async function dbstatus(){
   try {
@@ -26,4 +32,3 @@ export async function dbstatus(){
     throw error;
   }
 }
-

@@ -4,31 +4,31 @@ import { Class  } from "./Class";
 
 @Entity('tblActivities')
 export class Activitie{
-    @PrimaryGeneratedColumn({type: 'number'})
+    @PrimaryGeneratedColumn()
     IdActivities!: number;
     
-    @Column({type: 'number', nullable: false})
+    @Column({ type: 'int', nullable: false })
     IdUser!: number;
 
-    @Column({type: 'number', nullable: false})
+    @Column({ type: 'int', nullable: false })
     IdClass!: number;
 
-    @Column({type: 'string', nullable: false})
+    @Column({ type: 'nvarchar', length: 100, nullable: false })
     ActivitieType!: string;
 
-    @Column({type: 'string', nullable: false})
+    @Column({ type: 'nvarchar', length: 255, nullable: false })
     ActivitieTitle!: string;
 
-    @Column({type: 'string'})
+    @Column({ type: 'nvarchar', length: 1500 })
     ActivitieDescription!: string;
 
-    @Column({type: 'date', nullable: false})
+    @Column({ type: 'datetime', nullable: false })
     ActivitieDataEnd!: Date;
 
-    @Column({type: 'date', nullable: false})
+    @Column({ type: 'datetime', nullable: false })
     ActivitieDataCreate!: Date;
 
-    @Column({type: 'date', nullable: false})
+    @Column({ type: 'datetime', nullable: false })
     CreatedAt!: Date;
 
     @ManyToOne(() => User, user => user.activities )
