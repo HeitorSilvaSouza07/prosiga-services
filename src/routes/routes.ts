@@ -19,5 +19,6 @@ router.get("/classes", ClassControllers.listClass);
 router.get("/users/:id", UserControllers.get);
 router.get("/users", UserControllers.listUsers);
 router.post("/users", UserControllers.createUser);
+router.post("/login", UserControllers.loginUser);
 
 export default router;
