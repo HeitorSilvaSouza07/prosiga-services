@@ -6,7 +6,7 @@ import { Class } from "../entities/Class";
 
 export class ActivitieController {
 
-    public static async get(req: Request, res: Response) {
+    static async get(req: Request, res: Response) {
         try {
             const id = Number(req.params.id)
 
@@ -34,7 +34,7 @@ export class ActivitieController {
         }
     }
 
-    public static async listActivities(req: Request, res: Response) {
+    static async listActivities(req: Request, res: Response) {
         try {
             const repo = Connection.getRepository(Activitie)
             const activitie = await repo.find()
@@ -60,7 +60,7 @@ export class ActivitieController {
         }
     }
 
-    public static async create(req: Request, res: Response) {
+    static async create(req: Request, res: Response) {
         try {
             const repo = Connection.getRepository(Activitie)
             const { IdUser, IdClass, ActivitieType,
@@ -192,7 +192,7 @@ export class ActivitieController {
         }
     }
 
-    public static async delete(req: Request, res: Response) {
+    static async delete(req: Request, res: Response) {
         try {
             const id = Number(req.params.id)
 
