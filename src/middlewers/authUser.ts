@@ -1,4 +1,6 @@
 import { NextFunction, Request, Response } from "express";
+import { Connection } from "../database/dataBase";
+import { User } from "../entities/User";
 
 export const authUser(){
     export function auth(req: Request, res: Response, next: NextFunction){
