@@ -1,5 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm";
 import { Activitie } from "./Activitie";
+import { Bit } from "mssql";
 
 @Entity('tblUser')
 export class User{
@@ -17,6 +18,9 @@ export class User{
 
     @Column({ type: 'nvarchar', length: 100 })
     UserPassword!: string;
+
+    @Column({ type: 'bit', default: false })
+    UseAdmin!: boolean;
 
     @OneToMany(() => Activitie, (activitie) => activitie.user)
     activities!: Activitie[];
