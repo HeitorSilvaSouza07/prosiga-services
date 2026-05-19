@@ -2,6 +2,7 @@ import { DataSource } from 'typeorm'
 import { User } from '../entities/User'
 import { Activitie } from '../entities/Activitie'
 import { Class } from '../entities/Class'
+import { Subject } from '../entities/Subject'
 
 export const Connection = new DataSource({
     type: 'mssql',
@@ -15,7 +16,7 @@ export const Connection = new DataSource({
         trustServerCertificate: true,
         enableArithAbort: true,
     },
-    entities: [User, Activitie, Class],
+    entities: [User, Activitie, Class, Subject],
     synchronize: process.env.NODE_ENV !== 'production',
     logging: process.env.NODE_ENV === 'development',
     pool: {
