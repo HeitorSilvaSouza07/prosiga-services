@@ -2,6 +2,7 @@ import { Router } from "express";
 import { ActivitieController } from "../controllers/administrator/ActivitieController";
 import { ClassControllers } from "../controllers/administrator/ClassControllers";
 import { UserControllers } from "../controllers/administrator/UserControllers";
+import { SubjectController } from "../controllers/administrator/SubjectController";
 
 const router = Router();
 
@@ -20,5 +21,9 @@ router.get("/users/:id", UserControllers.get);
 router.get("/users", UserControllers.listUsers);
 router.post("/users", UserControllers.createUser);
 router.post("/login", UserControllers.loginUser);
+
+//subjects
+router.get("/subject", SubjectController.get);
+router.post("/subject", SubjectController.create);
 
 export default router;
