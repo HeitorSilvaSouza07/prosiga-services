@@ -3,6 +3,7 @@ import { ActivitieController } from "../controllers/administrator/ActivitieContr
 import { ClassControllers } from "../controllers/administrator/ClassControllers";
 import { UserControllers } from "../controllers/administrator/UserControllers";
 import { SubjectController } from "../controllers/administrator/SubjectController";
+import { PermissionController } from "../controllers/administrator/PermissionController";
 
 const router = Router();
 
@@ -24,5 +25,9 @@ router.post("/users", UserControllers.createUser);
 //subjects
 router.get("/subject/:id", SubjectController.get);
 router.post("/subject", SubjectController.create);
+
+//permissions
+router.post('/permission', PermissionController.create);
+router.get('/permission/:id', PermissionController.get);
 
 export default router;

@@ -3,6 +3,9 @@ import { User } from '../entities/User'
 import { Activitie } from '../entities/Activitie'
 import { Class } from '../entities/Class'
 import { Subject } from '../entities/Subject'
+import { Permission } from '../entities/Permission'
+import { Submit } from '../entities/Submit'
+import { UserPermission } from '../entities/UserPermission'
 
 export const Connection = new DataSource({
     type: 'mssql',
@@ -16,7 +19,7 @@ export const Connection = new DataSource({
         trustServerCertificate: true,
         enableArithAbort: true,
     },
-    entities: [User, Activitie, Class, Subject],
+    entities: [User, Activitie, Class, Subject, Permission, Submit, UserPermission],
     synchronize: process.env.NODE_ENV !== 'production',
     logging: process.env.NODE_ENV === 'development',
     pool: {

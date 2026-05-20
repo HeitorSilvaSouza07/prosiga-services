@@ -1,9 +1,9 @@
 import { Column, PrimaryGeneratedColumn, Entity } from "typeorm";
 
-@Entity('tblPermission')
+@Entity('tblPermissios')
 export class Permission{
 
-    @PrimaryGeneratedColumn()
+    @PrimaryGeneratedColumn({type: 'int'})
     IdPer!: number;
 
     @Column({type: 'nvarchar', length: 255})
