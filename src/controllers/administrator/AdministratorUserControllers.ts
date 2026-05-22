@@ -52,8 +52,9 @@ export class AdministratorUserControllers {
         }
     }
 
-    static async createUser(req: Request, res: Response) {
+    static async create(req: Request, res: Response) {
         try {
+            
             const { UserName, UserCpf, UserType, UserPassword } = req.body
 
             if (!UserName || !UserCpf || !UserType || !UserPassword) {
@@ -101,6 +102,7 @@ export class AdministratorUserControllers {
 
     static async deleteUser(req: Request, res: Response) {
         try {
+
             const id = Number(req.params.id)
 
             const repo = Connection.getRepository(User);
