@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { Connection } from "../../database/dataBase";
 import { Class } from "../../entities/Class";
 
-export class ClassControllers {
+export class AdministratorClassControllers {
     static async get(req: Request, res: Response) {
         try {
             const id = Number(req.params.id)

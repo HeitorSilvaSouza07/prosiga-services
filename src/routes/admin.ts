@@ -1,10 +1,11 @@
 import { Router } from "express";
-import { ActivitieController } from "../controllers/administrator/ActivitieController";
-import { ClassControllers } from "../controllers/administrator/ClassControllers";
-import { UserControllers } from "../controllers/administrator/UserControllers";
-import { SubjectController } from "../controllers/administrator/SubjectController";
-import { PermissionController } from "../controllers/administrator/PermissionController";
+import { ActivitieController } from "../controllers/administrator/AdministratorActivitieController";
+import { ClassControllers } from "../controllers/administrator/AdministratorClassControllers";
+import { UserControllers } from "../controllers/administrator/AdministratorUserControllers";
+import { SubjectController } from "../controllers/administrator/AdmnistratorSubjectController";
+import { PermissionController } from "../controllers/administrator/AdministratorPermissionController";
 import { AuthUser } from "../middlewers/userAuth";
+import { UserPermissionController } from "../controllers/administrator/AdministratorUserPermission";
 
 const router = Router();
 
@@ -30,5 +31,9 @@ router.post("/subject", SubjectController.create);
 //permissions
 router.post('/permission', PermissionController.create);
 router.get('/permission/:id', PermissionController.get);
+
+//user permission 
+router.get('/userPermission/:id', UserPermissionController.listByUser);
+router.get('/userPermission/:id', UserPermissionController.get);
 
 export default router;

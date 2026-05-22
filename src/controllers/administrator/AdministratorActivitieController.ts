@@ -4,7 +4,7 @@ import { Activitie } from "../../entities/Activitie";
 import { User } from "../../entities/User";
 import { Class } from "../../entities/Class";
 
-export class ActivitieController {
+export class AdministratorActivitieController {
 
     static async get(req: Request, res: Response) {
         try {

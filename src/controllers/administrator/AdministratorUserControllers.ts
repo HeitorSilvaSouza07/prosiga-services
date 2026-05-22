@@ -4,7 +4,7 @@ import { Connection } from "../../database/dataBase";
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
-export class UserControllers {
+export class AdministratorUserControllers {
     static async get(req: Request, res: Response) {
         try {
             const id = Number(req.params.id);

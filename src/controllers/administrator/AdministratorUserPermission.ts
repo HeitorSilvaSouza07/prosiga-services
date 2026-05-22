@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { UserPermission } from "../../entities/UserPermission";
 import { Connection } from "../../database/dataBase";
-export class UserPermissionController{
+export class AdministratorUserPermissionController{
     static async get(req: Request, res: Response){
         try{
 
@@ -31,40 +31,7 @@ export class UserPermissionController{
             })
         }
     }
-
-    static async update(req: Request, res: Response){
-        try{
-
-        }catch(error: any){
-            res.status(500).json({
-                status: false,
-                msg: error
-            })
-        }
-    }
-
-    static async create(req: Request, res: Response){
-        try{
-
-        }catch(error: any){
-            res.status(500).json({
-                status: false,
-                msg: error
-            })
-        }
-    }
-
-    static async list(req: Request, res: Response){
-        try{
-
-        }catch(error: any){
-            res.status(500).json({
-                status: false,
-                msg: error
-            })
-        }
-    }
-
+    
     static async listByUser(req: Request, res: Response){
         try{
 

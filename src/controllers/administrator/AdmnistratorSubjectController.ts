@@ -3,7 +3,7 @@ import { Subject } from "../../entities/Subject";
 import { Request, Response } from "express";
 
 
-export class SubjectController{
+export class AdministratorSubjectController{
     static async get(req: Request, res: Response){
         try{
             const id = Number(req.params.id);
