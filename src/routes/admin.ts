@@ -30,6 +30,7 @@ router.post("/subject", AdministratorSubjectController.create);
 
 //permissions
 router.get('/permissions', AdministratorPermissionController.list)
+router.post('/permissions', AdministratorPermissionController.create)
 
 //user permission 
 router.get('/userPermission/:id', AdministratorUserPermissionController.listByUser);
