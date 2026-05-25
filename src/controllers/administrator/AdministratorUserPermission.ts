@@ -72,5 +72,20 @@ export class AdministratorUserPermissionController{
         }
     }
 
+    static async delete(req: Request, res: Response){
+        try{
+
+        }catch(error: any){
+
+        }
+    }
+
+    static async create(req: Request, res: Response){
+        try{
+
+        }catch(error: any){
+
+        }
+    }
 
 }
