@@ -3,6 +3,7 @@ import { Activitie } from "./Activitie";
 import { Class } from "./Class";
 import { Submit } from "./Submit";
 import { UserPermission } from "./UserPermission";
+import { UserSubject } from "../entities/UserSubject";
 
 @Entity('tblUser')
 export class User{
@@ -38,4 +39,7 @@ export class User{
 
     @OneToMany(() => UserPermission, (userPermission) => userPermission.user)
     userPermissions!: UserPermission[];
+
+    @OneToMany(() => UserSubject, (userSubject) => userSubject.user)
+    userSubjects!: UserSubject[];
 }

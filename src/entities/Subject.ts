@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm";
+import { UserSubject } from "../entities/UserSubject";
 
 @Entity('tblSubject')
 export class Subject{
@@ -8,4 +9,8 @@ export class Subject{
 
     @Column({type: 'nvarchar', length: 100})
     SubName!: string;
+
+    @OneToMany(() => UserSubject, (userSubject) => userSubject.subject)
+    userSubjects!: UserSubject[];
+    
 }
