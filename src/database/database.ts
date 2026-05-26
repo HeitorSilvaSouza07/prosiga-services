@@ -20,7 +20,7 @@ export const Connection = new DataSource({
         enableArithAbort: true,
     },
     entities: [User, Activitie, Class, Subject, Permission, Submit, UserPermission],
-    synchronize: process.env.NODE_ENV !== 'production',
+    synchronize: false,
     logging: process.env.NODE_ENV === 'development',
     pool: {
         min: 2,
