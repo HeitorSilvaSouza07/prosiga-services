@@ -10,25 +10,22 @@ interface JwtPayload {
   [key: string]: any;
 }
 
-declare namespace Express {
-    export interface Request{
-      user: {
-        id: number,
-        role: string,
-        useAdmin: boolean
-      }
+declare global {
+  namespace Express {
+    export interface Request {
+      user?: {
+        id: number;
+        role?: string;
+        useAdmin?: boolean;
+      };
+      token?: string;
     }
-    export interface Request{
-      token: {
-        token: string;
-      }
-    }
+  }
 }
 
 export class AuthUsers {
-  static auth(){
+  static auth() {
     return (req: Request, res: Response, next: NextFunction) => {
-
       const authHeader = req.headers.authorization;
       if (!authHeader || !authHeader.startsWith("Bearer ")) {
         return res.status(401).json({ status: false, msg: "Token não fornecido" });
@@ -54,83 +51,56 @@ export class AuthUsers {
     };
   }
 
-  
-  static authAdmin(){
-    return(req: Request, res: Response, next: NextFunction) => {
+  static authAdmin() {
+    return async (req: Request, res: Response, next: NextFunction) => {
+      if (!req.token) {
+        return res.status(401).json({ status: false, msg: 'Token não enviado' });
+      }
 
-       const token = req.token;
+      if (!req.user?.id) {
+        return res.status(401).json({ status: false, msg: 'Token inválido' });
+      }
 
-       if(!token){
-         return res.status(400).json({ status: false, msg: 'Token não enviado' })
-       };
+      const repo = Connection.getRepository(User);
+      const user = await repo.findOneBy({ IdUser: req.user.id });
 
-       const id = req.user.id;
+      if (!user) {
+        return res.status(404).json({ status: false, msg: 'Usuario não existe' });
+      }
 
-       const repo = Connection.getRepository(User);
+      if (!user.UseAdmin) {
+        return res.status(403).json({ status: false, msg: 'Usuario não autorizado' });
+      }
 
-       const user =  repo.findOneBy({ IdUser: id})
-
-       if(!user){
-          return res.status(400).json({
-            status: false, msg: 'Usuario não existe'
-          })
-       }
-
-       const isAdmin = user.UseAdmin;
-
-       if(isAdmin != true || 1){
-          return res.status(400).json({
-            status: false, 
-            msg: 'Usuario não autorizado'
-          })
-       };
-
-       next();
-
-    }
+      next();
+    };
   }
 
-  static authTeacher(){
-    return(req: Request, res: Response, next: NextFunction) => {
+  static authTeacher() {
+    return (req: Request, res: Response, next: NextFunction) => {
+      if (!req.token) {
+        return res.status(401).json({ status: false, msg: 'Token não enviado' });
+      }
 
-      const token = req.token;
+      if (req.user?.role !== 'teacher') {
+        return res.status(403).json({ status: false, msg: 'Usuario não autorizado' });
+      }
 
-       if(!token){
-         return res.status(400).json({ status: false, msg: 'Token não enviado' })
-       };
-
-       const typeUser = req.user.role;
-       
-       if(typeUser != 'teacher'){
-          return res.status(400).json({
-            status: false, msg: 'Usuario não autorizado'
-          })
-       }
-
-       next();
-
-    }
+      next();
+    };
   }
 
-  static authStudent(){
-    return(req: Request, res: Response, next: NextFunction) => {
+  static authStudent() {
+    return (req: Request, res: Response, next: NextFunction) => {
+      if (!req.token) {
+        return res.status(401).json({ status: false, msg: 'Token não enviado' });
+      }
 
-      const token = req.token;
+      if (req.user?.role !== 'student') {
+        return res.status(403).json({ status: false, msg: 'Usuario não autorizado' });
+      }
 
-       if(!token){
-         return res.status(400).json({ status: false, msg: 'Token não enviado' })
-       };
-
-       const typeUser = req.user.role;
-       
-       if(typeUser != 'student'){
-          return res.status(400).json({
-            status: false, msg: 'Usuario não autorizado'
-          })
-       }
-
-       next();
-
-    }
+      next();
+    };
   }
 }

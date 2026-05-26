@@ -3,5 +3,7 @@ import { StudentSubmitController } from "../controllers/students/StudentSubmitCo
 
 const router = Router();
 
-// Submission 
+// Submission
 router.post('/submit', StudentSubmitController.createSubmit);
+
+export default router;

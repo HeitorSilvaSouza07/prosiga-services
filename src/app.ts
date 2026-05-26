@@ -6,6 +6,8 @@ import cors from 'cors';
 import { dbstatus } from './database/dataBase';
 import adminRouter from './routes/routes';
 import authRouter from './routes/auth';
+import studentRouter from './routes/student';
+import teacherRouter from './routes/teacher';
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -19,6 +21,10 @@ app.use('/api/auth', authRouter);
 
 // Rotas administrativas protegidas
 app.use('/api', adminRouter);
+
+// Rotas de estudante e professor
+app.use('/api/student', studentRouter);
+app.use('/api/teacher', teacherRouter);
 
 // Inicializa o banco e o servidor
 dbstatus().then(() => {
