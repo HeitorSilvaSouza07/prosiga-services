@@ -3,7 +3,7 @@ import { Activitie } from "./Activitie";
 import { Class } from "./Class";
 import { Submit } from "./Submit";
 import { UserPermission } from "./UserPermission";
-import { UserSubject } from "../entities/UserSubject";
+import { UserSubject } from "./UserSubject";
 
 @Entity('tblUser')
 export class User{

@@ -9,7 +9,7 @@ import { AuthUsers } from "../middlewers/auth";
 
 const router = Router();
 
-router.use(AuthUsers.auth, AuthUsers.authAdmin);
+//router.use(AuthUsers.auth, AuthUsers.authAdmin);
 
 // Atividades
 router.get("/activities/:id", AdministratorActivitieController.get);
@@ -35,7 +35,7 @@ router.get('/permissions', AdministratorPermissionController.list)
 router.post('/permissions', AdministratorPermissionController.create)
 
 //user permission 
-router.get('/userPermission/:id', AdministratorUserPermissionController.listByUser);
+router.get('/userPermission', AdministratorUserPermissionController.listByUser);
 router.get('/userPermission/:id', AdministratorUserPermissionController.get);
 router.post('/userpermissions', AdministratorUserPermissionController.create);
 router.delete('/userpermissions/:id', AdministratorUserPermissionController.delete);

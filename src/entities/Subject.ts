@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm";
-import { UserSubject } from "../entities/UserSubject";
+import { UserSubject } from "./UserSubject";
 
 @Entity('tblSubject')
 export class Subject{

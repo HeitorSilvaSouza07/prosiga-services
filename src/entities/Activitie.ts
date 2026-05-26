@@ -32,13 +32,13 @@ export class Activitie{
     @Column({ type: 'datetime', nullable: false })
     CreatedAt!: Date;
 
-    @ManyToOne(() => User, user => user.activities)
+    @ManyToOne(() => User, user => user.IdUser)
     user!: User;
 
-    @ManyToOne(() => Class, (classe) => classe.activities)
+    @ManyToOne(() => Class, (classe) => classe.IdClass)
     classe!: Class;
 
-    @OneToMany(() => Submit, (submit) => submit.activities)
+    @OneToMany(() => Submit, (submit) => submit.IdSubmit)
     submits!: Submit[];
 
 }

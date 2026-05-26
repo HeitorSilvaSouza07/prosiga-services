@@ -29,7 +29,7 @@ export class AdministratorActivitieController {
         } catch (error) {
             return res.status(500).json({
                 status: false,
-                msg: 'ERROR IN BANK CONNECTION'
+                msg: 'ERROR IN BANK CONNECTION' + error
             })
         }
     }
