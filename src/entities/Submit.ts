@@ -17,6 +17,9 @@ export class Submit{
     @Column({type: 'date'})
     SubSenteAt!: Date;
 
+    @Column({type: 'float'})
+    SubNota!: Number;
+
     @ManyToOne(() => User, (user) => user.submits)
     @JoinColumn({ name: 'IdUser' })
     user!: User;

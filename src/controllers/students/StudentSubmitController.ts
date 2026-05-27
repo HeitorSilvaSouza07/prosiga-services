@@ -17,7 +17,7 @@ export class StudentSubmitController{
             const user = await Connection.getRepository(User).findOneBy({ IdUser: Number(IdUser)})
 
             if(!user){
-                return res.status(4040).json({status: false, msg: 'O usuario não existe'})
+                return res.status(404).json({status: false, msg: 'O usuario não existe'})
             }
 
             const actitivitie = await Connection.getRepository(Activitie).findOneBy({ IdActivities: Number(IdActivitites)})
@@ -39,7 +39,8 @@ export class StudentSubmitController{
             const send = repoSend.create({
                 IdActivities: Number(IdActivitites),
                 SubSenteAt: sendAt,
-                IdUser: Number(IdUser)
+                IdUser: Number(IdUser),
+                SubNota: 0
             })
 
             await repoSend.save(send);
