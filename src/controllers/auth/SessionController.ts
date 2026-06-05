@@ -53,7 +53,9 @@ export class SessionController{
 
 
         } catch (error: any) {
+            console.log(error)
             return res.status(500).json({
+                error: error,
                 status: false,
                 msg: 'Erro interno no banco de dados'
             })

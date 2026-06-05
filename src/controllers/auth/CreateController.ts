@@ -27,10 +27,19 @@ export class CreateController{
             const hashPassword = await bcrypt.hash(String(UserPassword), 10);
         
             const repo = Connection.getRepository(User);
-        
+
+            const cpf = await repo.findOneBy({ UserCpf: String(UserCpf) })
+
+            if (cpf){
+                return res.status(400).json({
+                    status: false,
+                    msg: 'Cpf já cadastrado'
+                })
+            }
+
             const newUser = repo.create({
                 UserName: String(UserName),
-                UserCpf: String(UserCpf),
+                UserCpf: String(cpf),
                 UserType: String(UserType),
                 UserPassword: hashPassword
             });
@@ -41,8 +50,10 @@ export class CreateController{
                 status: true,
                 msg: 'Usuario criado com sucesso'
             })
+            
         }catch(error: any){
             return res.status(500).json({
+                error,
                 status: false,
                 msg: 'Erro ao criar usuário'
             })
