@@ -41,7 +41,7 @@ export class CreateController{
                 UserName: String(UserName),
                 UserCpf: String(cpf),
                 UserType: String(UserType),
-                UserPassword: hashPassword
+                UserPassword: hashPassword,
             });
         
             await repo.save(newUser);
